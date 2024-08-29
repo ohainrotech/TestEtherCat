@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="SafetyLogic" Id="{4b752a0c-d853-4d91-8492-d0fdf9872ce3}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM SafetyLogic
+VAR
+	SafetyRun AT %Q* : BOOL;
+	ErrorActknowledgement AT %Q* : BOOL;
+	ResetSafety AT %Q* : BOOL;
+	TestOut1 AT %Q* : BOOL;
+	TestIn1 AT %I* : BOOL;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[SafetyRun := TRUE;
+]]></ST>
+    </Implementation>
+    <LineIds Name="SafetyLogic">
+      <LineId Id="5" Count="0" />
+      <LineId Id="13" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
