@@ -1009,7 +1009,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{00AC4958-DADC-48C0-AB0E-55DF32E01767}" Name="Test" PrjFilePath="Test\Test.plcproj" TmcFilePath="Test\Test.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Test\Test.tmc" TmcHash="{9CF383D8-FF8C-B5E1-863B-89A992AB2124}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Test\Test.tmc" TmcHash="{E27ADB29-5299-5E46-209B-394B4F74F537}">
 					<Name>Test Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -1023,7 +1023,7 @@
 							<Type>UINT</Type>
 						</Var>
 						<Var>
-							<Name>SafetyLogic.FromSafetyEstopOK</Name>
+							<Name>SafetyLogic.TestIn1</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
@@ -1050,18 +1050,18 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>SafetyLogic.ToSafetyActivateEstop</Name>
+							<Name>SafetyLogic.TestOut1</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>SafetyLogic.ToSafetyTest</Name>
+							<Name>SafetyLogic.TurnOff</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<UnrestoredVarLinks ImportTime="2024-07-05T12:35:38">
 						<OwnerA Name="OutputSrc" Prefix="TIPC^Test^Test Instance" Type="2">
 							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 8 (EK1200)^Term 11 (EL1918)">
-								<Link VarA="SafetyLogic.TestOut1" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="StandardOutputs^TwinSafeGroup1.FromPlcActivateEstop_8" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="SafetyLogic.TestOut1" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="StandardOutputs^TwinSafeGroup1.FromPlcActivateEstop_8" Size="1" RestoreInfo="BNotFound"/>
 							</OwnerB>
 						</OwnerA>
 					</UnrestoredVarLinks>

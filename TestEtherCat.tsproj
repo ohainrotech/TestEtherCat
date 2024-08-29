@@ -1009,7 +1009,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{00AC4958-DADC-48C0-AB0E-55DF32E01767}" Name="Test" PrjFilePath="Test\Test.plcproj" TmcFilePath="Test\Test.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Test\Test.tmc" TmcHash="{46C90E22-B4D6-7859-E9EF-B657927C997B}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Test\Test.tmc" TmcHash="{E27ADB29-5299-5E46-209B-394B4F74F537}">
 					<Name>Test Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -1051,6 +1051,10 @@
 						</Var>
 						<Var>
 							<Name>SafetyLogic.TestOut1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>SafetyLogic.TurnOff</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
@@ -2331,6 +2335,9 @@
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^Test^Test Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 3 (EL2008)">
+				<Link VarA="PlcTask Outputs^SafetyLogic.TurnOff" VarB="Channel 2^Output"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 4 (EL1918)">
 				<Link VarA="PlcTask Outputs^SafetyLogic.ErrorActknowledgement" VarB="StandardOutputs^TwinSafeGroup1.ErrorAcknowledgement_1"/>
 				<Link VarA="PlcTask Outputs^SafetyLogic.ResetSafety" VarB="StandardOutputs^TwinSafeGroup1.FromPlcResetEstop_5"/>
