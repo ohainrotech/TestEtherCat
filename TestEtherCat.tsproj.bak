@@ -1933,10 +1933,10 @@
 									<Entry Name="FSOE__InputChannel_16" Index="#x6001" Sub="#x10">
 										<Type>BIT</Type>
 									</Entry>
-									<Entry Name="FSOE__FSoE Slave CRC_0" Index="#x6000" Sub="#x02">
+									<Entry Name="FSOE__FSoE Slave CRC_0" Index="#x6000" Sub="#x02" Flags="#x00008020">
 										<Type>UINT</Type>
 									</Entry>
-									<Entry Name="FSOE__InputChannel_17" Index="#x6001" Sub="#x11">
+									<Entry Name="FSOE__InputChannel_17" Index="#x6001" Sub="#x11" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
 									<Entry Name="FSOE__InputChannel_18" Index="#x6001" Sub="#x12">
@@ -2335,6 +2335,9 @@
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^Test^Test Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 3 (EL2008)">
+				<Link VarA="PlcTask Outputs^SafetyLogic.TurnOff" VarB="Channel 2^Output"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 4 (EL1918)">
 				<Link VarA="PlcTask Outputs^SafetyLogic.ErrorActknowledgement" VarB="StandardOutputs^TwinSafeGroup1.ErrorAcknowledgement_1"/>
 				<Link VarA="PlcTask Outputs^SafetyLogic.ResetSafety" VarB="StandardOutputs^TwinSafeGroup1.FromPlcResetEstop_5"/>

@@ -1897,19 +1897,19 @@
 									<Entry Name="FSOE__InputChannel_04" Index="#x6001" Sub="#x04" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
-									<Entry Name="FSOE__InputChannel_05" Index="#x6001" Sub="#x05">
+									<Entry Name="FSOE__InputChannel_05" Index="#x6001" Sub="#x05" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
-									<Entry Name="FSOE__InputChannel_06" Index="#x6001" Sub="#x06">
+									<Entry Name="FSOE__InputChannel_06" Index="#x6001" Sub="#x06" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
-									<Entry Name="FSOE__InputChannel_07" Index="#x6001" Sub="#x07">
+									<Entry Name="FSOE__InputChannel_07" Index="#x6001" Sub="#x07" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
-									<Entry Name="FSOE__InputChannel_08" Index="#x6001" Sub="#x08">
+									<Entry Name="FSOE__InputChannel_08" Index="#x6001" Sub="#x08" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
-									<Entry Name="FSOE__InputChannel_09" Index="#x6001" Sub="#x09">
+									<Entry Name="FSOE__InputChannel_09" Index="#x6001" Sub="#x09" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
 									<Entry Name="FSOE__InputChannel_10" Index="#x6001" Sub="#x0a">
@@ -1933,10 +1933,10 @@
 									<Entry Name="FSOE__InputChannel_16" Index="#x6001" Sub="#x10">
 										<Type>BIT</Type>
 									</Entry>
-									<Entry Name="FSOE__FSoE Slave CRC_0" Index="#x6000" Sub="#x02">
+									<Entry Name="FSOE__FSoE Slave CRC_0" Index="#x6000" Sub="#x02" Flags="#x00008020">
 										<Type>UINT</Type>
 									</Entry>
-									<Entry Name="FSOE__InputChannel_17" Index="#x6001" Sub="#x11">
+									<Entry Name="FSOE__InputChannel_17" Index="#x6001" Sub="#x11" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
 									<Entry Name="FSOE__InputChannel_18" Index="#x6001" Sub="#x12">
