@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="TimeOut" Id="{d3d885bb-9bdd-4b88-973a-7c1f9f8608f3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK TimeOut
+VAR_INPUT
+	TOutTime : TIME;
+END_VAR
+VAR
+	TIM : Ton;
+	Inp : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Inp := FALSE;
+TIM(IN:=Inp, PT:=TOutTime);]]></ST>
+    </Implementation>
+    <Method Name="RunOut" Id="{92a3bdde-9d41-4426-826c-37e703a60d27}">
+      <Declaration><![CDATA[METHOD RunOut : BOOL
+VAR_INPUT
+	bInp : BOOL;
+//	TOutTime : TIME;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Inp :=bInp;
+TIM(IN:=Inp, PT:=TOutTime);
+RunOut := Tim.Q; 
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="TimeOut">
+      <LineId Id="15" Count="0" />
+      <LineId Id="18" Count="0" />
+    </LineIds>
+    <LineIds Name="TimeOut.RunOut">
+      <LineId Id="13" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

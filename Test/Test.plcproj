@@ -9,7 +9,7 @@
     <WriteProductVersion>true</WriteProductVersion>
     <GenerateTpy>false</GenerateTpy>
     <Name>Test</Name>
-    <ProgramVersion>3.1.4024.0</ProgramVersion>
+    <ProgramVersion>3.1.4026.10</ProgramVersion>
     <Application>{fde081a7-39ad-4ad9-9c33-7e3a1d2d3598}</Application>
     <TypeSystem>{c76c4ebd-2e18-4501-993e-1f9f25452c17}</TypeSystem>
     <Implicit_Task_Info>{04137635-cecb-4286-b9ce-c71116cad3a2}</Implicit_Task_Info>
@@ -18,6 +18,15 @@
     <LibraryReferences>{2f3604b8-cb62-4064-8e9c-06fb9c4b9f4d}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Util\FlashBits.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\Pulser.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\TimeOut.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +40,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="Util" />
     <Folder Include="SafetyLogic" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="FlashBits" Id="{bf60f8b8-539f-4dd5-b813-9283ee85e8f8}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM FlashBits
+VAR_OUTPUT
+	Bits : BYTE;
+END_VAR
+VAR
+	MaxFlashFreq	: TIME := T#100MS;
+    FlashTimer		: TON;    // timeout timer 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[FlashTimer(IN:=NOT FlashTimer.Q,PT:=MaxFlashFreq);
+IF FlashTimer.Q THEN
+	IF Bits=0 THEN
+		Bits :=1;
+	ELSE	
+		Bits:=Bits+1;
+	END_IF
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FlashBits">
+      <LineId Id="5" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="16" Count="1" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

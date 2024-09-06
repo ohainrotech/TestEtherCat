@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="SafetyLogic" Id="{4b752a0c-d853-4d91-8492-d0fdf9872ce3}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM SafetyLogic
 VAR
@@ -9,16 +9,26 @@ VAR
 	TestOut1 AT %Q* : BOOL;
 	TestIn1 AT %I* : BOOL;
 	TurnOff AT %Q*  : BOOL;
+	ResetEstop : BOOL;
+	ActivateEstop AT %Q* : BOOL;
 END_VAR
 
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[SafetyRun := TRUE;
-]]></ST>
+FlashBits();
+IF ResetEstop THEN
+	ErrorActknowledgement := FlashBits.Bits.3;
+	ResetSafety:= FlashBits.Bits.3;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="SafetyLogic">
       <LineId Id="5" Count="0" />
+      <LineId Id="18" Count="0" />
       <LineId Id="13" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="16" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

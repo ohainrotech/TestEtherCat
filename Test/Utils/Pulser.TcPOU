@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Pulser" Id="{4496ebad-26b5-422d-9b61-9c396183ec0a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Pulser
+VAR_INPUT
+	// Width of the counted ON pulse
+	ShortPulseWidth : TIME := T#200MS;
+	// Width of the paused ON pulse
+	LongPulseWidth : TIME := T#2S;
+	// Width of the deadtime between pulses
+	DeadPulseWidth : TIME := T#300MS;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="M_Pulse" Id="{3ee845d1-4402-41df-9bb0-d436d4c2d2b9}">
+      <Declaration><![CDATA[METHOD M_Pulse : BOOL
+VAR_INPUT
+	// If the pulsing should be ON or OFF if OFF the return value will also be LOW/OFF
+	Active : BOOL;
+	// Number of short pulses
+	Pulses : INT := 0;
+END_VAR
+VAR_INST
+	pulseCounter : INT := 0;
+	state : INT := 0;
+	timer : TP;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+// Return immediatly if not active.
+IF NOT Active THEN
+	pulseCounter := 0;
+	M_Pulse := FALSE;
+	state := 0;
+	timer(IN:=FALSE);
+	RETURN;
+END_IF
+
+// special case if 0 pulses are requested
+IF Pulses <= 0 THEN
+	pulseCounter := 0;
+	M_Pulse := TRUE;
+	state := 0;
+	timer(IN:=FALSE);
+	RETURN;
+END_IF
+
+
+CASE state OF
+0: // Start the timer for high signal
+	M_Pulse := TRUE;
+	timer(IN:=TRUE,PT:=LongPulseWidth);
+	state := 1;
+1: // alive time
+	IF timer.Q THEN // Keep high
+		M_Pulse := TRUE;
+		timer(IN:=FALSE);
+	ELSE // start timer for low periode
+		M_Pulse := FALSE;
+		timer(IN:=TRUE,PT:=DeadPulseWidth);
+		state := 2;		
+	END_IF
+2: // deadtime
+	IF timer.Q THEN // keep low
+		M_Pulse := FALSE;
+		timer(IN:=FALSE);
+	ELSE // start timer for high periode
+		M_Pulse := TRUE;
+		pulseCounter := pulseCounter + 1;
+		IF pulseCounter >= Pulses THEN
+			pulseCounter := 0;
+			timer(IN:=TRUE,PT:=LongPulseWidth);
+		ELSE
+			timer(IN:=TRUE,PT:=ShortPulseWidth);
+		END_IF
+		state := 1;		
+	END_IF
+END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="Pulser">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="Pulser.M_Pulse">
+      <LineId Id="24" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="27" Count="3" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="67" Count="4" />
+      <LineId Id="85" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="73" Count="1" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="33" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
