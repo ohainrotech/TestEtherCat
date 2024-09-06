@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.53">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.10">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{A1547100-CACA-3391-D9F5-9F869D346303}" AutoDeleteType="true">FSOE_19</Name>
@@ -64,6 +64,15 @@
 				<BitSize>16</BitSize>
 				<BitOffs>136</BitOffs>
 			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000007}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..6] OF BIT</Name>
+			<BitSize>7</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>7</Elements>
+			</ArrayInfo>
 		</DataType>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-002000000004}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..3] OF BIT</Name>
@@ -1000,24 +1009,9 @@
 		</System>
 		<Plc>
 			<Project GUID="{00AC4958-DADC-48C0-AB0E-55DF32E01767}" Name="Test" PrjFilePath="Test\Test.plcproj" TmcFilePath="Test\Test.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Test\Test.tmc" TmcHash="{9E554778-5B93-E8E2-C6F9-BD3AA6B785CA}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{14D622DB-283E-17F0-9662-431BD574E3FD}" TmcPath="Test\Test.tmc">
 					<Name>Test Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
-					<Vars VarGrpType="1">
-						<Name>PlcTask Inputs</Name>
-						<Var>
-							<Name>MAIN.Input1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.EthIB0</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>SafetyLogic.TestIn1</Name>
-							<Type>BOOL</Type>
-						</Var>
-					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
 						<Var>
@@ -1050,6 +1044,25 @@
 						</Var>
 						<Var>
 							<Name>SafetyLogic.ActivateEstop</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>MAIN.Input1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.EthIB0</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>SafetyLogic.TestIn1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>SafetyLogic.GroupComError</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
@@ -1217,7 +1230,7 @@
 							<SyncMan>001000012600010001000000000100010001001026010000</SyncMan>
 							<SyncMan>001100012200010002000000000100010001001122010000</SyncMan>
 							<SyncMan>001216002400010003000000000000000800001224010000</SyncMan>
-							<SyncMan>001d27002000010004000000000000000900001d20010000</SyncMan>
+							<SyncMan>001d28002000010004000000000000000900001d20010000</SyncMan>
 							<SyncMan>002e00002400000003000000000000000000002e24000000</SyncMan>
 							<SyncMan>002f00002000000004000000000000000000002f20000000</SyncMan>
 							<Fmmu>0000000000000000001200020100000001000000060000000200000000000000</Fmmu>
@@ -1239,6 +1252,14 @@
 							<Pdo Name="ConnectionOutputs" Index="#x1600" InOut="1" Flags="#x2011" SyncMan="2">
 								<Entry Name="TwinSafeGroup1.0x000100C4 - Robot FSoE (Robot FSoE)_1_3 RxPDO" Index="#x6000" Sub="#x01">
 									<Type GUID="{A1547100-CACA-3391-D9F5-9F869D346303}">FSOE_19</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="StandardInputs" Index="#x1bf0" Flags="#x2011" SyncMan="3">
+								<Entry Name="TwinSafeGroup1.FromSafetyComError_8" Index="#x7000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="StandardOutputs" Index="#x17f0" InOut="1" Flags="#x2011" SyncMan="2">
@@ -1299,7 +1320,7 @@
 								<ModuleIdent>691</ModuleIdent>
 								<Module Id="#x03090002" Type="FSLOGIC" Class="FSLOGIC">
 									<Name>Module 2 (FSLOGIC)</Name>
-									<ImageId>407</ImageId>
+									<ImageId>487</ImageId>
 									<ModuleData>02000000b3020000000004000000000000000000000000000000000000000000</ModuleData>
 									<PdoIndex>7167</PdoIndex>
 									<PdoIndex>6143</PdoIndex>
@@ -1880,17 +1901,16 @@
 									</Entry>
 								</Pdo>
 								<Pdo Name="Inputs" Index="#x1a10" Flags="#x0091" SyncMan="3">
-									<ExcludePdo>#x1a00</ExcludePdo>
 									<Entry Name="FSOE__FSoE Slave CMD" Index="#x6000" Sub="#x01">
 										<Type>USINT</Type>
 									</Entry>
-									<Entry Name="FSOE__InputChannel_01" Index="#x6001" Sub="#x01">
+									<Entry Name="FSOE__InputChannel_01" Index="#x6001" Sub="#x01" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
 									<Entry Name="FSOE__InputChannel_02" Index="#x6001" Sub="#x02">
 										<Type>BIT</Type>
 									</Entry>
-									<Entry Name="FSOE__InputChannel_03" Index="#x6001" Sub="#x03">
+									<Entry Name="FSOE__InputChannel_03" Index="#x6001" Sub="#x03" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
 									<Entry Name="FSOE__InputChannel_04" Index="#x6001" Sub="#x04">
@@ -2093,7 +2113,6 @@
 									</Entry>
 								</Pdo>
 								<Pdo Name="Outputs" Index="#x1610" InOut="1" Flags="#x0091" SyncMan="2">
-									<ExcludePdo>#x1600</ExcludePdo>
 									<Entry Name="FSOE__FSoE CMD" Index="#x7000" Sub="#x01">
 										<Type>USINT</Type>
 									</Entry>
@@ -2311,7 +2330,7 @@
 									<ModuleIdent>65732</ModuleIdent>
 									<Module Id="#x03090001" Type="Robot FSoE" Class="65732">
 										<Name>Module 1 (Robot FSoE)</Name>
-										<ImageId>409</ImageId>
+										<ImageId>489</ImageId>
 										<ModuleData>91060000c400010000000c000000000000000000000000000000000000000000</ModuleData>
 										<PdoIndex>6672</PdoIndex>
 										<PdoIndex>5648</PdoIndex>
@@ -2329,11 +2348,9 @@
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030020"/>
 		<MappingInfo Identifier="{03040010-0010-0304-1000-040310000403}" Id="#x02030010" Watchdog="04000000040000000400000004000000"/>
 		<OwnerA Name="TIID^Device 1 (EtherCAT)">
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 4 (EL1918)">
-				<Link VarA="Term 7 (EK1200)^Term 6 (EK1122)^Box 8 (FANUC R-30iB Plus)^Module 1 (Robot FSoE)^Inputs^FSOE" VarB="ConnectionOutputs^TwinSafeGroup1.0x000100C4 - Robot FSoE (Robot FSoE)_1_3 RxPDO"/>
-			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 6 (EK1122)^Box 8 (FANUC R-30iB Plus)">
 				<Link VarA="Term 7 (EK1200)^Term 4 (EL1918)^ConnectionInputs^TwinSafeGroup1.0x000100C4 - Robot FSoE (Robot FSoE)_1_3 TxPDO" VarB="Module 1 (Robot FSoE)^Outputs^FSOE"/>
+				<Link VarA="Term 7 (EK1200)^Term 4 (EL1918)^ConnectionOutputs^TwinSafeGroup1.0x000100C4 - Robot FSoE (Robot FSoE)_1_3 RxPDO" VarB="Module 1 (Robot FSoE)^Inputs^FSOE"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^Test^Test Instance">
@@ -2341,6 +2358,7 @@
 				<Link VarA="PlcTask Outputs^SafetyLogic.TurnOff" VarB="Channel 2^Output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 7 (EK1200)^Term 4 (EL1918)">
+				<Link VarA="PlcTask Inputs^SafetyLogic.GroupComError" VarB="StandardInputs^TwinSafeGroup1.FromSafetyComError_8"/>
 				<Link VarA="PlcTask Outputs^SafetyLogic.ActivateEstop" VarB="StandardOutputs^TwinSafeGroup1.FromPlcActivateEstop_7"/>
 				<Link VarA="PlcTask Outputs^SafetyLogic.ErrorActknowledgement" VarB="StandardOutputs^TwinSafeGroup1.ErrorAcknowledgement_1"/>
 				<Link VarA="PlcTask Outputs^SafetyLogic.ResetSafety" VarB="StandardOutputs^TwinSafeGroup1.FromPlcResetEstop_5"/>

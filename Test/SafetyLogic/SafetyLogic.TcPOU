@@ -11,6 +11,7 @@ VAR
 	TurnOff AT %Q*  : BOOL;
 	ResetEstop : BOOL;
 	ActivateEstop AT %Q* : BOOL;
+	GroupComError AT %I* : BOOL;
 END_VAR
 
 ]]></Declaration>
