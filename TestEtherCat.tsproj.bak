@@ -1907,7 +1907,7 @@
 									<Entry Name="FSOE__InputChannel_01" Index="#x6001" Sub="#x01" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
-									<Entry Name="FSOE__InputChannel_02" Index="#x6001" Sub="#x02">
+									<Entry Name="FSOE__InputChannel_02" Index="#x6001" Sub="#x02" Flags="#x00008020">
 										<Type>BIT</Type>
 									</Entry>
 									<Entry Name="FSOE__InputChannel_03" Index="#x6001" Sub="#x03" Flags="#x00008020">

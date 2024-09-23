@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.53">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.10">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{A1547100-CACA-3391-D9F5-9F869D346303}" AutoDeleteType="true">FSOE_19</Name>
@@ -1009,28 +1009,9 @@
 		</System>
 		<Plc>
 			<Project GUID="{00AC4958-DADC-48C0-AB0E-55DF32E01767}" Name="Test" PrjFilePath="Test\Test.plcproj" TmcFilePath="Test\Test.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Test\Test.tmc" TmcHash="{D483781F-DC43-9EB7-A737-419E3C65995B}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{14D622DB-283E-17F0-9662-431BD574E3FD}" TmcPath="Test\Test.tmc">
 					<Name>Test Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
-					<Vars VarGrpType="1">
-						<Name>PlcTask Inputs</Name>
-						<Var>
-							<Name>MAIN.Input1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.EthIB0</Name>
-							<Type>UINT</Type>
-						</Var>
-						<Var>
-							<Name>SafetyLogic.TestIn1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>SafetyLogic.GroupComError</Name>
-							<Type>BOOL</Type>
-						</Var>
-					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
 						<Var>
@@ -1063,6 +1044,25 @@
 						</Var>
 						<Var>
 							<Name>SafetyLogic.ActivateEstop</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>MAIN.Input1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.EthIB0</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>SafetyLogic.TestIn1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>SafetyLogic.GroupComError</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
@@ -1320,7 +1320,7 @@
 								<ModuleIdent>691</ModuleIdent>
 								<Module Id="#x03090002" Type="FSLOGIC" Class="FSLOGIC">
 									<Name>Module 2 (FSLOGIC)</Name>
-									<ImageId>407</ImageId>
+									<ImageId>487</ImageId>
 									<ModuleData>02000000b3020000000004000000000000000000000000000000000000000000</ModuleData>
 									<PdoIndex>7167</PdoIndex>
 									<PdoIndex>6143</PdoIndex>
@@ -2330,7 +2330,7 @@
 									<ModuleIdent>65732</ModuleIdent>
 									<Module Id="#x03090001" Type="Robot FSoE" Class="65732">
 										<Name>Module 1 (Robot FSoE)</Name>
-										<ImageId>409</ImageId>
+										<ImageId>489</ImageId>
 										<ModuleData>91060000c400010000000c000000000000000000000000000000000000000000</ModuleData>
 										<PdoIndex>6672</PdoIndex>
 										<PdoIndex>5648</PdoIndex>
