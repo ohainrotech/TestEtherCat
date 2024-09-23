@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
+  <GVL Name="GVL_Var" Id="{3260c5bf-a31b-4ce1-9235-65a4ff5c2466}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	EthIB0 AT %I* : UINT ;
+	EthOB0 AT %Q* : UINT ;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

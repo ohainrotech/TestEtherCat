@@ -1,24 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="MAIN" Id="{97141ba4-d654-40f7-b7ee-9901641685db}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	Input1 AT %I* : BOOL ;
 	Output1 AT %Q* : BOOL ;
-	EthIB0 AT %I* : UINT ;
-	EthOB0 AT %Q* : UINT ;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[Output1 := Input1;
 
 SafetyLogic();
+
+Gvl_Var.EthOB0.1 := FlashBits.Bits.3;
+Gvl_Var.EthOB0.2 := FlashBits.Bits.4;
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="2" Count="0" />
       <LineId Id="16" Count="0" />
       <LineId Id="15" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="21" Count="1" />
       <LineId Id="17" Count="0" />
     </LineIds>
   </POU>

@@ -10,6 +10,7 @@ VAR
 	TestIn1 AT %I* : BOOL;
 	TurnOff AT %Q*  : BOOL;
 	ResetEstop : BOOL;
+	iResetEstop AT %I* : BOOL;
 	ActivateEstop AT %Q* : BOOL;
 	GroupComError AT %I* : BOOL;
 END_VAR
@@ -18,12 +19,14 @@ END_VAR
     <Implementation>
       <ST><![CDATA[SafetyRun := TRUE;
 FlashBits();
-IF ResetEstop THEN
+IF (ResetEstop OR iResetEstop) THEN
 	ErrorActknowledgement := FlashBits.Bits.3;
 	ResetSafety:= FlashBits.Bits.3;
+	Gvl_Var.EthOB0.0 := FlashBits.Bits.3;
 ELSE
 	ErrorActknowledgement := False;
-	ResetSafety:= FALSE;	
+	ResetSafety:= FALSE;
+	Gvl_Var.EthOB0.0 := FALSE;	
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="SafetyLogic">
@@ -31,8 +34,11 @@ END_IF]]></ST>
       <LineId Id="18" Count="0" />
       <LineId Id="13" Count="0" />
       <LineId Id="15" Count="0" />
-      <LineId Id="20" Count="1" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="21" Count="0" />
       <LineId Id="23" Count="1" />
+      <LineId Id="28" Count="0" />
       <LineId Id="16" Count="0" />
     </LineIds>
   </POU>
